@@ -1,9 +1,10 @@
-package com.example.demo.repositories;
+package com.rachacartaserver.repositories;
 
-import com.example.demo.domain.User.User;
+import com.rachacartaserver.models.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, String> {
-  UserDetails findByLogin(String login);
+  Optional<User> findByLogin(String login);
 }
