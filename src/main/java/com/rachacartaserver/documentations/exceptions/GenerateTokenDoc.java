@@ -1,6 +1,6 @@
 package com.rachacartaserver.documentations.exceptions;
 
-import com.rachacartaserver.exceptions.GenerateTokenException;
+import com.rachacartaserver.exceptions.InternalException;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @ApiResponse(
         responseCode = "500",
         description = "Retorno de erro interno ao gerar token",
-        content = @Content(mediaType = "application/json", schema = @Schema(implementation = GenerateTokenException.class))
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = InternalException.class))
 )
 public @interface GenerateTokenDoc {
 }

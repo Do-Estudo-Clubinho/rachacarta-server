@@ -1,8 +1,9 @@
 package com.rachacartaserver.controllers.v1;
 
+import com.rachacartaserver.DTOs.RegisterDTO;
 import com.rachacartaserver.documentations.controllers.v1.AuthDoc;
-import com.rachacartaserver.models.User.User;
-import com.rachacartaserver.services.AuthenticationService;
+import com.rachacartaserver.domains.User.User;
+import com.rachacartaserver.services.AuthorizationService;
 import com.rachacartaserver.DTOs.LoginRequestDTO;
 import com.rachacartaserver.DTOs.LoginResponseDTO;
 import jakarta.validation.Valid;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private AuthenticationService authenticationService;
+    private AuthorizationService authorizationService;
 
     @Autowired
     private com.rachacartaserver.infra.adapters.JWTAdapter JWTAdapter;
@@ -25,7 +26,7 @@ public class AuthController {
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
     public LoginResponseDTO  login (@RequestBody @Valid LoginRequestDTO body) {
-        User user = this.authenticationService.login(body.login(), body.senha());
+        User user = this.authorizationService.login(body);
         String token = this.JWTAdapter.createUserToken(user);
 
         LoginResponseDTO response = new LoginResponseDTO(token, user);
@@ -33,8 +34,11 @@ public class AuthController {
         return response;
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup () {
-        return ResponseEntity.ok("response");
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User signup (RegisterDTO body) {
+        User user = this.authorizationService.register(body);
+
+        return user;
     }
 }

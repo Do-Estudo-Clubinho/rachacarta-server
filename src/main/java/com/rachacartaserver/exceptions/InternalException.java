@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(
         value = HttpStatus.INTERNAL_SERVER_ERROR,
-        reason = "Ocorreu erro ao gerar a token de autenticação, por favor tente mais tarde."
+        reason = "Sorry, an internal server error occurred. Please try again later."
 )
-public class GenerateTokenException extends RuntimeExceptionConfiguration {
-    public GenerateTokenException(){
+public class InternalException extends RuntimeExceptionConfiguration {
+    public InternalException(){
         super();
     }
 }

@@ -2,10 +2,10 @@ package com.rachacartaserver.infra.adapters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.rachacartaserver.exceptions.GenerateTokenException;
+import com.rachacartaserver.exceptions.InternalException;
 import com.rachacartaserver.infra.environments.SecurityEnvironment;
 import com.rachacartaserver.exceptions.InvalidTokenException;
-import com.rachacartaserver.models.User.User;
+import com.rachacartaserver.domains.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class JWTAdapter {
 
     String ISSUER = "racha-carta-server";
 
-    public String createUserToken (User userAuthentication) throws GenerateTokenException {
+    public String createUserToken (User userAuthentication) throws InternalException {
         try {
             Algorithm algorithm = this.getAlgorithm();
             String token = JWT
@@ -31,7 +31,7 @@ public class JWTAdapter {
 
             return token;
         } catch (Exception error) {
-            throw new GenerateTokenException();
+            throw new InternalException();
         }
     }
 

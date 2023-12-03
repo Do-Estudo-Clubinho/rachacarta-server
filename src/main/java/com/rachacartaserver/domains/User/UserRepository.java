@@ -1,6 +1,5 @@
-package com.rachacartaserver.repositories;
+package com.rachacartaserver.domains.User;
 
-import com.rachacartaserver.models.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

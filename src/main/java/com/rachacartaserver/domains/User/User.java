@@ -1,4 +1,4 @@
-package com.rachacartaserver.models.User;
+package com.rachacartaserver.domains.User;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

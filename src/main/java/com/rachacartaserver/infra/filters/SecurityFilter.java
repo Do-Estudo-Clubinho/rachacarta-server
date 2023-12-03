@@ -1,7 +1,7 @@
 package com.rachacartaserver.infra.filters;
 
 import com.rachacartaserver.exceptions.UserNotFoundException;
-import com.rachacartaserver.repositories.UserRepository;
+import com.rachacartaserver.domains.User.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
